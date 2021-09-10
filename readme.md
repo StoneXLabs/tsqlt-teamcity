@@ -77,3 +77,10 @@ You will need the Gradle plugin for Eclipse btw.
 What if I want to contribute
 ---
 Hey, this is Github, the equivalent of Sparta in the coding world, just clone and send me a pull request, I am a nice person, I swear!
+
+
+Update (v2.5.1 - 2021-09-09)
+---
+Added feature to run single suitcase (tSQLt class).
+
+In case of any problems/questions please contact EDS team.
