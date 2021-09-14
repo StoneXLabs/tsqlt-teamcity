@@ -69,6 +69,6 @@ public class SqlServerConnectionBuilder implements ConnectionBuilder {
         String lib = configuration.getAgentPluginsDirectory().getAbsolutePath();
 
         String architecture = configuration.getSystemInfo().bitness() == Bitness.BIT32 ? "x86" : "x64";
-        return String.format("%s\\tsqlt-agent\\lib\\native\\%s\\", lib, architecture);
+        return String.format("%s\\teamcity-tsqlt-agent\\lib\\native\\%s\\", lib, architecture);
     }
 }
