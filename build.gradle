@@ -11,8 +11,8 @@ buildscript {
 
 subprojects {
     apply plugin: 'java'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    sourceCompatibility = 11
+    targetCompatibility = 11
 }
 
 project(':common') {
@@ -24,7 +24,7 @@ project(':agent') {
 
     dependencies {
         compile project(':common')
-        agent 'net.sourceforge.jtds:jtds:1.2.7'
+        agent 'com.microsoft.sqlserver:mssql-jdbc:9.2.0.jre11'
 
         testCompile 'org.testng:testng:6.8.21'
         testCompile 'org.mockito:mockito-core:1.+'

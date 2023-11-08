@@ -57,22 +57,4 @@ public class TSQLTRunType extends RunType {
     public Map<String, String> getDefaultRunnerProperties() {
         return null;
     }
-
-    private boolean needWindowsAuth(@NotNull Map<String, String> properties) {
-        if (!properties.containsKey(PropertyNames.WINDOWS_AUTH))
-            return false;
-
-        return Boolean.parseBoolean(properties.get(PropertyNames.WINDOWS_AUTH));
-    }
-
-    @NotNull
-    @Override
-    public List<Requirement> getRunnerSpecificRequirements(@NotNull Map<String, String> runParameters) {
-        List<Requirement> requirements = new Vector<>();
-
-        if (needWindowsAuth(runParameters))
-            requirements.add(new Requirement("teamcity.agent.jvm.os.name", "Windows", RequirementType.CONTAINS));
-
-        return requirements;
-    }
 }

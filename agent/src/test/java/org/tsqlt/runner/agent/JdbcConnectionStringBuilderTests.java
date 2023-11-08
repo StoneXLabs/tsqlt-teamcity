@@ -11,17 +11,17 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertEquals;
 
-public class JtdsConnectionStringBuilderTests {
+public class JdbcConnectionStringBuilderTests {
 
     private ServerInstance server;
-    private JtdsConnectionStringBuilder sut;
+    private JdbcConnectionStringBuilder sut;
 
     @Test
     public void testItCanBuildConnectionStringWithDefaults() {
         server = mock(ServerInstance.class, new ServerAnswer());
-        sut = new JtdsConnectionStringBuilder(server, "database");
+        sut = new JdbcConnectionStringBuilder(server, "database");
 
-        assertEquals(sut.toString(), "jdbc:jtds:sqlserver://server:1433/database");
+        assertEquals(sut.toString(), "jdbc:sqlserver://server:1433/database");
     }
 
     @Test
@@ -29,9 +29,9 @@ public class JtdsConnectionStringBuilderTests {
         server = mock(ServerInstance.class, new ServerAnswer());
         when(server.getPort()).thenReturn(1234);
 
-        sut = new JtdsConnectionStringBuilder(server, "database");
+        sut = new JdbcConnectionStringBuilder(server, "database");
 
-        assertEquals(sut.toString(), "jdbc:jtds:sqlserver://server:1234/database");
+        assertEquals(sut.toString(), "jdbc:sqlserver://server:1234/database");
     }
 
     @Test
@@ -40,17 +40,17 @@ public class JtdsConnectionStringBuilderTests {
         when(server.hasInstance()).thenReturn(true);
         when(server.getInstance()).thenReturn("instancename");
 
-        sut = new JtdsConnectionStringBuilder(server, "database");
+        sut = new JdbcConnectionStringBuilder(server, "database");
 
-        assertEquals(sut.toString(), "jdbc:jtds:sqlserver://server:1433/database;instance=instancename");
+        assertEquals(sut.toString(), "jdbc:sqlserver://server:1433/database;instance=instancename");
     }
 
     @Test
     public void testItCanHandleDomainAsOption() {
         server = mock(ServerInstance.class, new ServerAnswer());
-        sut = new JtdsConnectionStringBuilder(server, "database", "domainname");
+        sut = new JdbcConnectionStringBuilder(server, "database", "domainname");
 
-        assertEquals(sut.toString(), "jdbc:jtds:sqlserver://server:1433/database;domain=domainname");
+        assertEquals(sut.toString(), "jdbc:sqlserver://server:1433/database;domain=domainname");
     }
 
     @Test
@@ -61,17 +61,17 @@ public class JtdsConnectionStringBuilderTests {
         }};
 
         server = mock(ServerInstance.class, new ServerAnswer());
-        sut = new JtdsConnectionStringBuilder(server, "database", null, options, false);
+        sut = new JdbcConnectionStringBuilder(server, "database", null, options, false);
 
-        assertEquals(sut.toString(), "jdbc:jtds:sqlserver://server:1433/database;option1=value1;option2=value2");
+        assertEquals(sut.toString(), "jdbc:sqlserver://server:1433/database;option1=value1;option2=value2");
     }
 
     @Test
     public void testItCanBuildConnectionStringWhenUsingWindowsAuth(){
         server = mock(ServerInstance.class, new ServerAnswer());
-        sut = new JtdsConnectionStringBuilder(server, "database", null, null, true);
+        sut = new JdbcConnectionStringBuilder(server, "database", null, null, true);
 
-        assertEquals(sut.toString(), "jdbc:jtds:sqlserver://server:1433/database;useNTLMv2=true");
+        assertEquals(sut.toString(), "jdbc:sqlserver://server:1433/database;useNTLMv2=true");
     }
 
     class ServerAnswer implements Answer {

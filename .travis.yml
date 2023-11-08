@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - openjdk11
 
 # Now we need to make sure it builds, passing the path as property
 script: ./gradlew serverPlugin
