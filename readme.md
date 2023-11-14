@@ -26,9 +26,8 @@ An image says more than words:
 
 Notes about configuration
 ---
-* Windows SSO Authentication is supported only for Windows platforms, this is a limitation of the jTDS driver for Java.
+* Only Windows SSO Authentication is supported.
 * If you don't specify the port, default (1433) would be used.
-* If using Windows Authentication instead of SQL Server Authentication you should specify the domain or machine name to log-in (using the notation domain\user).
 * The runner doesn't prepare your database for testing, the recommended way is to have separate steps for creation/prepare the database before the tSQLt runner step and drop the database at the end. Believe me, you would thank me later for that advice.
 * tSQLt is supported only in SQL Server 2005 and greater (You should check tSQLt documentation if you are using this plugin anyway).
 
@@ -37,8 +36,8 @@ Compiling the project
 ---
 I updated the project to use the amazing [Gradle](http://gradle.org) so it would be easy to build and do nice things (**yay!**). First, make sure of the following things:
 
-* You have Java installed, JRE 6 is needed for TeamCity plugins (duh!) 
-* You have a compatible JDK installed, TeamCity needs JDK 6
+* You have Java installed, JRE 11 is needed for TeamCity plugins
+* You have a compatible JDK installed, TeamCity needs JDK 11
 * You have a TeamCity installation in your machine (hey, after all, you are developing a TeamCity plugin)
 * Hoorah! you are ready!
 
@@ -55,7 +54,7 @@ gradle test
 
 To build the plugin (you will get the zip plugin file in the _distributions_ directory):
 ```
-gradle assemblePlugin
+gradle assemble
 ```
 
 
@@ -77,10 +76,3 @@ You will need the Gradle plugin for Eclipse btw.
 What if I want to contribute
 ---
 Hey, this is Github, the equivalent of Sparta in the coding world, just clone and send me a pull request, I am a nice person, I swear!
-
-
-Update (v2.5.1 - 2021-09-09)
----
-Added feature to run single suitcase (tSQLt class).
-
-In case of any problems/questions please contact EDS team.

@@ -16,8 +16,6 @@
         <constructor-arg>
             <list>
                 <bean class="org.tsqlt.runner.server.ServerInstanceValidator"/>
-                <bean class="org.tsqlt.runner.server.DomainUserValidator"/>
-                <bean class="org.tsqlt.runner.server.PasswordValidator"/>
                 <bean class="org.tsqlt.runner.server.DatabaseValidator"/>
             </list>
         </constructor-arg>
